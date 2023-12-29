@@ -104,7 +104,7 @@ st.set_page_config(
 )
 
 def fetchdata():
-    res=cursor.execute(f"select username from admin_data")
+    cursor.execute(f"select username from admin_data")
     admins=[]
     for i in list(cursor.fetchall()):
         admins.append(i)
@@ -142,10 +142,11 @@ def run():
     st.sidebar.markdown("# Choose Admin Username")
     activities = fetchdata()
     choice = st.sidebar.selectbox("Choose among the given options:", activities)
-    
+    cursor.execute(f"select jobrole from admin_data where username='{choice}'")
+    jobrole=cursor.fetchone()
     # if choice == 'Normal User':
     st.title("Resume Analyser")
-    st.markdown('''<h4 style='text-align: left; color: skyblue;'>Upload your resume, for applying the job</h4>''',
+    st.markdown('''<h4 style='text-align: left; color: blue;'>Upload your resume, for the job role <u>'''+jobrole[0]+'''</u></h4>''',
                 unsafe_allow_html=True) 
     pdf_file = st.file_uploader("Choose your Resume", type=["pdf"])
     if pdf_file is not None:
