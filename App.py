@@ -92,7 +92,7 @@ def insert_data(choice,name, email,contact, res_score, timestamp, no_of_pages, c
 
     DB_table_name = 'user_data'
     insert_sql = "insert into " + DB_table_name + """
-    values (0,%s,%s,%s,%s,%s,0,%s,%s,0,%s,%s,%s)"""
+    values (0,%s,%s,%s,%s,%s,0,0,%s,%s,0,%s,%s,%s)"""
     rec_values = (
     choice,name, email,contact,str(res_score), timestamp, str(no_of_pages), cand_level, skills,encodedNumpyData)
     cursor.execute(insert_sql, rec_values)
@@ -245,7 +245,7 @@ def run():
             score = 0
             for percent_complete in range(resume_score):
                 score += 1
-                time.sleep(0.1)
+                # time.sleep(0.1)
                 my_bar.progress(percent_complete + 1)
             st.success('Your Resume Writing Score: ' + str(score))
             st.warning(
@@ -309,7 +309,7 @@ def run():
 
                     def submittoast():
                         msg = st.toast('Wait a minute...')
-                        time.sleep(1)
+                        time.sleep(0.5)
                         msg.toast('Your Resume Submitted Succesfully', icon = "✅")
 
                     insert_data(choice,Name,Email,Contact,res_score, timestamp,
