@@ -148,7 +148,7 @@ def run():
     st.title("Resume Analyser")
     st.markdown('''<h4 style='text-align: left; color: blue;'>Upload your resume, for the job role <u>'''+jobrole[0]+'''</u></h4>''',
                 unsafe_allow_html=True) 
-    pdf_file = st.file_uploader("Choose your Resume", type=["pdf"])
+    pdf_file = st.file_uploader("Choose your Resume as per job role related", type=["pdf"])
     if pdf_file is not None:
         # with st.spinner('Uploading your Resume....'):
         #     time.sleep(4)
