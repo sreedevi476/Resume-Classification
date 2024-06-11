@@ -169,6 +169,7 @@ def run():
             cv = CountVectorizer()
             count_matrix = cv.fit_transform(content)
             mat = cosine_similarity(count_matrix)
+            # print("mat value",mat)
             res_score=round((mat[1][0]*100),2)
             st.write('Resume Matches by: ', res_score , '%')
 
